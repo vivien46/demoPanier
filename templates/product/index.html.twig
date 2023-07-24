@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+<div class="container text-center my-5">
+<h1>Nos Produits</h1>
+</div>
+
+   <section class="container" style="display:flex; justify-content: space-around; flex-wrap: wrap;">
+
+    {% for product in products %}
+
+    <div class="card text-center mb-4" style="width: 25rem;">
+        <img src="{{ product.image}}" class="card-img-top" alt="image du product" style="height: 300px;">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+        </div>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th scope="row"><span class="badge rounded-pill text-bg-primary"><i class="fa-solid fa-tag"></i> {{ product.price }} €</span></th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="card-footer">
+            <a href="{{ path('cart_add', {id:product.id}) }}" class="btn btn-primary" style="background: #7430F8; color: white;"><i class="fa-solid fa-cart-shopping"></i> Ajouter au panier</a>
+        </div>
+    </div>
+
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}
